@@ -3,17 +3,70 @@
 (function () {
   'use strict';
 
-describe('todo list object', function () {
-	 describe('Creating a new todo list', function () {
+var todo;
 
-	 });
+// it('should have default array todoList', function (){
+    // 	expect(todo.todoList).to.eql([]);
+    // });
+
+describe('Todo Constructor', function () {
+
+  // Test creation of instance
+  describe('Creating todoList from Constructor', function () {
+
+    beforeEach(function(){
+      todo = new Todo();
+    });
+
+	    it('should be an instance of Todo', function () {
+	      expect(todo).to.be.an.instanceof(Todo);
+	    });
+
+		    it('should have a boolean for complete or not', function(){
+		    	expect(todo.completed).to.equal(false);
+		    });
+
+		    it('should have a name that is a string', function(){
+		    	expect(todo).to.have.property('name');	
+		    });
+
+		    it('should have a boolean for hidden or not', function(){
+		    	expect(todo.hidden).to.equal(false);
+		    });
+
+    // it('item should be an object', function () {
+    //   expect(todo.item).to.eql({});
+    // });
+
+  // 	it('create default array for todoList', function(){
+		// expect(todoList.items).to.eql([]);
+		// });
+
+    // it('should have a status that is a string', function () {
+    //   expect(cat).to.have.property('status');
+    // });
+
+    // it('should be grumpy by default', function () {
+    //   expect(cat.status).to.equal('grumpy');
+    // });
+
+    // it('function to take object and add to array', function () {
+    //   expect(todo.item).to.eql({});
+    //   todo.addItem();
+    //   expect(todo.todoList).to.eql(todo.todoList);
+    // });
+
+  });
+
 
 });
-  // describe('Give it some context', function () {
-  //   describe('maybe a bit more context here', function () {
-  //     it('should run here few assertions', function () {
+  describe('create an array to hold instances of todo', function () {
+  	it('create default array for todo called todoArray', function(){
+			expect(todoArray).to.eql([]);
+		});
+  });
 
-  //     });
-  //   });
-  // });
+
+
+
 })();
