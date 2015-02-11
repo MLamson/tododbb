@@ -4,18 +4,52 @@ var todoArray = [];
 var todoTemplate;
 var todoTemplateFunc;
 
+//to disable enter key until fix issue
+$(document).keypress(
+    function(event){
+     if (event.which == '13') {
+        event.preventDefault();
+      }
+});
 
 
-todoTemplate = $('#text').html(),
+todoTemplate = $('#todoTemp').html(),
 todoTemplateFunc = _.template(todoTemplate);
 
 //create instance of todo.
 var Todo = function (itemName){
+	this.id = _.random(0, 9999);
 	this.status = "incomplete";
+	// this.status = "incomplete";
 	this.item = itemName || "";
+	this.toggleStatus = function(){
+    if (this.status === 'incomplete') {
+        this.status = 'complete';
+      } else {
+        this.status = 'incomplete';
+      }
+      console.log(status + ' oh man!');
+};//end toggle
 
-};
 
+};//end Todo 
+
+
+// Create click event for toggleing todos
+  $('#addList').on('click', 'li', function (event) {
+    event.preventDefault();
+
+    var thisTask = event.target;
+    var thisTaskID = Number(thisTask.id);
+
+    var thisTaskInstance = _.findWhere(todoArray, { id: thisTaskID });
+
+    thisTaskInstance.toggleStatus();
+
+    $(thisTask).removeClass().addClass(thisTaskInstance.status);
+
+
+  });
 
 
 $('#inputClick').on('click', function(event){
@@ -27,7 +61,7 @@ $('#inputClick').on('click', function(event){
     // Grab text from my input
     //taskname = $('#.text').document.getElementById.val();
     var taskname = document.getElementById('text').value;
-    console.log(taskname);
+    
     // Create a new Todo
     taskinstance = new Todo(taskname);
 
@@ -38,8 +72,6 @@ $('#inputClick').on('click', function(event){
     //taskname.reset();
     $("#itemInput")[0].reset();
   });
-
-
 
 
 
