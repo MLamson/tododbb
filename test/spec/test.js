@@ -60,11 +60,23 @@ describe('Todo Constructor', function () {
 
 
 });
-  describe('create an array to hold instances of todo', function () {
-  	it('create default array for todo called todoArray', function(){
-			expect(todoArray).to.eql([]);
+	describe('field should not be empty when hitting submit', function(){
+		it('test to be sure field not empty', function(){
+			expect(document.getElementById('listInput').value).is.not.equal('');
+		});
+	});
+
+
+  describe('add item to array', function () {
+  	it('create item and add to array', function(){
+  		todoArray.push(todo);
+			expect(todoArray).to.have.length(1);
 		});
   });
+
+  // It "i can add one to array"
+  // todoArray.push(item);
+  // expect(todoArray).to.have.length(1);
 
 
 
