@@ -1,62 +1,51 @@
 console.log('The Iron Yard Rocks');
 
-var todoTemplateFunc,
-		todoTemplate;
+var todoArray = [];
+var todoTemplate;
+var todoTemplateFunc;
 
-	todoTemplate = $('#todoNext').html();
-	//console.log(todoTemplate);
-  todoTemplateFunc = _.template(todoTemplate);
 
-var Todo = function (options) {
-	options = options || {};
-	this.status = 'incomplete';
-	this.name ='';
-	this.hidden = false;
+
+todoTemplate = $('#text').html(),
+todoTemplateFunc = _.template(todoTemplate);
+
+//create instance of todo.
+var Todo = function (itemName){
+	this.status = "incomplete";
+	this.item = itemName || "";
+
 };
 
-var todoArray = [];
 
-$('#inputForm').on('submit', function(event){
-  	event.preventDefault();
 
-  	var oneTodo = new Todo(name);
+$('#inputClick').on('click', function(event){
+	event.preventDefault();
+	console.log('click');
+// todoForm.on('submit', function (event) {
+//     event.preventDefault();
 
-  	console.log('clicked');
-  	var name = $(this).find('#text').val();
-  	console.log(name);
+    // Grab text from my input
+    //taskname = $('#.text').document.getElementById.val();
+    var taskname = document.getElementById('text').value;
+    console.log(taskname);
+    // Create a new Todo
+    taskinstance = new Todo(taskname);
 
-  	
+    // Run the function addTodo
+    addTodo(taskinstance);
 
-  	addTodo(oneTodo);
-
-// clear the form.
-  	this.reset();
-
+    // Clear the form
+    //taskname.reset();
+    $("#itemInput")[0].reset();
   });
 
-addTodo = function(task){
-  	// add the task to array
-  	todoArray.push(task);
-  	$('itemAppend').prepend(todoTemplateFunc(task));
-  	// send to the page
 
-  	//$.post(todoURL, JSON.stringify(task));
 
+
+
+
+      addTodo = function (item) {
+      	console.log(item);
+    todoArray.push(item);
+    $('#addList').prepend(todoTemplateFunc(item));
   };
-
-//document.getElementById("addItem").onclick = function addItem(item){
-	//var todo = new Todo();
-	//var name = document.getElementById('listInput').value;
-	//todo.name = name;
-	//todoArray.push(todo);
-	// console.log(name);
-
-	// $('.itemAppend').append(name);
-	// $("#inputForm")[0].reset();
-	//$('listInput')[0].reset();
-		// var item = new Todo;
-		// item.name = document.getElementById("#listInput");
-		// todoArray.push(item);
-	// $('inputForm').append(todo);
-
-
